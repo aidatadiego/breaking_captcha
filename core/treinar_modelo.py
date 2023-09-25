@@ -59,11 +59,15 @@ modelo.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2)))
 # mais uma camada
 modelo.add(Flatten())
 modelo.add(Dense(500, activation="relu"))
+
 # camada de saída
-modelo.add(Dense(26, activation="softmax"))
+modelo.add(Dense(37, activation="softmax"))
+# modelo.add(Dense(26, activation="sigmoid"))
+
 # compilar todas as camadas
 modelo.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["accuracy"])
-
+# modelo.compile(loss="sparse_categorical_crossentropy", optimizer="adam", metrics=["accuracy"])
+# modelo.compile(loss="binary_crossentropy", optimizer="adam", metrics=["accuracy"])
 # treinar a inteligência artificial
 modelo.fit(X_train, Y_train, validation_data=(X_test, Y_test), batch_size=26, epochs=10, verbose=1)
 
